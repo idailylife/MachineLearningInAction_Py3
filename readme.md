@@ -1,4 +1,4 @@
-# A Python 3 implement for the book: Machine Learning in Action published
+# A Python 3 implement for the book: Machine Learning in Action
 
 Implemented with python 3.5.1
 
