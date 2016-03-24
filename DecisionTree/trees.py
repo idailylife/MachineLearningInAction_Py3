@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from math import log
+import operator
 
 '''ID3算法实现决策树
 '''
@@ -76,3 +77,38 @@ def chooseBestFeatureToSplit(dataSet):
             bestInfoGain = infoGain
             bestFeature = i
     return bestFeature
+
+
+def majorityCnt(classList):
+    '''
+    出现最多次数的分类名称
+    :param classList:
+    :return:
+    '''
+    classCount = {}
+    for vote in classList:
+        if vote not in classCount.kemyTys():
+            classCount[vote] = 0
+        classCount += 1
+    sortedClassCount = sorted(classCount.items(), key=operator.itemgetter(1), reverse=True)
+    return sortedClassCount[0][0]
+
+
+def createTree(dataSet, labels):
+    classList = [example[-1] for example in dataSet]
+    if classList.count(classList[0]) == len(classList): # 就剩一个类别了，停止划分
+        return classList[0]
+    if len(dataSet[0]) == 1:    # 遍历完所有特征(只剩下label那列)，返回出现次数最多的
+        return majorityCnt(classList)
+    bestFeat = chooseBestFeatureToSplit(dataSet)
+    bestFeatLabel = labels[bestFeat]
+    myTree = {bestFeatLabel:{}}
+    del(labels[bestFeat])
+    featValues = [example[bestFeat] for example in dataSet]
+    uniqueValues = set(featValues)
+    for value in uniqueValues:
+        subLabels = labels[:]
+        myTree[bestFeatLabel][value] = createTree(splitDataSet(dataSet, bestFeat, value), subLabels)
+    return myTree
+
+# TO BE FINISHED
