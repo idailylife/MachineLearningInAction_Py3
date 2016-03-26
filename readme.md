@@ -6,5 +6,6 @@ Implemented with python 3.5.1
 
 * kNN
 * Decision Tree
-* Naive Bayesian (WIP...)
+* Naive Bayesian
+* Logistic Regression (Work in progress...)
 * ...
