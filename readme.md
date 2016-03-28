@@ -7,5 +7,6 @@ Implemented with python 3.5.1
 * kNN
 * Decision Tree
 * Naive Bayesian
-* Logistic Regression (Work in progress...)
+* Logistic Regression
+* SVM (Work in progress...)
 * ...
