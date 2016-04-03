@@ -8,5 +8,6 @@ Implemented with python 3.5.1
 * Decision Tree
 * Naive Bayesian
 * Logistic Regression
-* SVM (Work in progress...)
+* SVM
+* AdaBoost (to be started...)
 * ...
