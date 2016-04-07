@@ -9,5 +9,6 @@ Implemented with python 3.5.1
 * Naive Bayesian
 * Logistic Regression
 * SVM
-* AdaBoost (to be started...)
+* AdaBoost
+* Regression (Work in progress)
 * ...
