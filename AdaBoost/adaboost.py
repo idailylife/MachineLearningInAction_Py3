@@ -11,6 +11,20 @@ def loadSimpData():
     classLabels = [1.0, 1.0, -1.0, -1.0, 1.0]
     return dataMat, classLabels
 
+def loadDataSet(fileName):
+    numFeat = len(open(fileName).readline().split('\t'))
+    dataMat = []
+    labelMat = []
+    fr = open(fileName)
+    for line in fr.readlines():
+        lineArr = []
+        curLine = line.strip().split('\t')
+        for i in range(numFeat - 1):
+            lineArr.append(float(curLine[i]))
+        dataMat.append(lineArr)
+        labelMat.append(float(curLine[-1]))
+    return dataMat, labelMat
+
 def stumpClassify(dataMatrix, dimen, threshVal, threshIneq):
     retArray = ones((shape(dataMatrix)[0], 1))
     if threshIneq == 'lt':
@@ -75,4 +89,16 @@ def adaBoostTrainDS(dataArr, classLabels, numIt=40):
         if errorRate == 0.0:
             break
     return weakClassArr
+
+def adaClassify(datToClass, classifierArr):
+    dataMatrix = mat(datToClass)
+    m = shape(dataMatrix)[0]
+    aggClassEst = mat(zeros((m,1)))
+    for i in range(len(classifierArr)):
+        classEst = stumpClassify(dataMatrix, classifierArr[i]['dim'],\
+                                 classifierArr[i]['thresh'],\
+                                 classifierArr[i]['ineq'])
+        aggClassEst += classifierArr[i]['alpha'] * classEst
+        print(aggClassEst)
+    return sign(aggClassEst)
 
