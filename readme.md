@@ -10,5 +10,5 @@ Implemented with python 3.5.1
 * Logistic Regression
 * SVM
 * AdaBoost
-* Regression (Work in progress)
+* Regression (CART)
 * ...
