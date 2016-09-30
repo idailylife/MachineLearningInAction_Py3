@@ -1,14 +1,5 @@
 # A Python 3 implementation for the book: Machine Learning in Action
 
-Implemented with python 3.5.1
+Implemented with python 3.5
 
-## Table of Contents
-
-* kNN
-* Decision Tree
-* Naive Bayesian
-* Logistic Regression
-* SVM
-* AdaBoost
-* Regression (CART)
-* ...
+Current status: Ch11.Apriori
